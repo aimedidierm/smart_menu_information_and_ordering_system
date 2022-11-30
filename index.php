@@ -30,10 +30,10 @@
               <h6 class="font-weight-light">Sign in to continue.</h6>
               <form class="pt-3" action="login.php" method="post">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" name="email" placeholder="Email">
+                  <input type="email" class="form-control form-control-lg" name="email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password">
+                  <input type="password" class="form-control form-control-lg" name="password" placeholder="Enter password">
                 </div>
                 <div class="mt-3">
                 <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</a></button>
