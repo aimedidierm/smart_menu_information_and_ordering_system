@@ -34,10 +34,7 @@ require 'php-includes/check-login.php';
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Bordered table</h4>
-                  <p class="card-description">
-                    Add class <code>.table-bordered</code>
-                  </p>
+                  <h4 class="card-title">User orders</h4>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
@@ -73,10 +70,10 @@ require 'php-includes/check-login.php';
                             </div>
                           </td>
                           <td>
-                            $ 77.99
+                            77.99 Rwf
                           </td>
                           <td>
-                            May 15, 2015
+                            May 15, 2022
                           </td>
                         </tr>
                         <tr>
@@ -92,10 +89,10 @@ require 'php-includes/check-login.php';
                             </div>
                           </td>
                           <td>
-                            $245.30
+                            245.30 Rwf
                           </td>
                           <td>
-                            July 1, 2015
+                            July 1, 2022
                           </td>
                         </tr>
                         <tr>
@@ -111,10 +108,10 @@ require 'php-includes/check-login.php';
                             </div>
                           </td>
                           <td>
-                            $138.00
+                            138.00 Rwf
                           </td>
                           <td>
-                            Apr 12, 2015
+                            Apr 12, 2022
                           </td>
                         </tr>
                         <tr>
@@ -130,10 +127,10 @@ require 'php-includes/check-login.php';
                             </div>
                           </td>
                           <td>
-                            $ 77.99
+                            77.99 Rwf
                           </td>
                           <td>
-                            May 15, 2015
+                            May 15, 2022
                           </td>
                         </tr>
                         <tr>
@@ -149,48 +146,10 @@ require 'php-includes/check-login.php';
                             </div>
                           </td>
                           <td>
-                            $ 160.25
+                            160.2 Rwf
                           </td>
                           <td>
-                            May 03, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            6
-                          </td>
-                          <td>
-                            John Doe
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 123.21
-                          </td>
-                          <td>
-                            April 05, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            7
-                          </td>
-                          <td>
-                            Henry Tom
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 150.00
-                          </td>
-                          <td>
-                            June 16, 2015
+                            May 03, 2022
                           </td>
                         </tr>
                       </tbody>
