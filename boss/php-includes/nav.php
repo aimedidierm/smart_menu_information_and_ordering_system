@@ -1,77 +1,70 @@
 <?php
-$query = "SELECT * FROM admin WHERE email= ? limit 1";
-$stmt = $db->prepare($query);
+$sql = "SELECT *  FROM admin WHERE email = ? limit 1";
+$stmt = $db->prepare($sql);
 $stmt->execute(array($_SESSION['email']));
-$rows = $stmt->fetch(PDO::FETCH_ASSOC);
-if ($stmt->rowCount()>0) {
-    $names=$rows['names'];
-}
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$names=$row['names'];
 ?>
-<div class="wrapper ">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <div class="logo">
-        <a href="#" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png">
-          </div>
-        </a>
-        <a href="dashboard.php" class="simple-text logo-normal">
-          <?php echo $names;?>
-        </a>
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="navbar-brand-wrapper d-flex justify-content-center">
+        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-sort-variant"></span>
+          </button>
+        </div>  
       </div>
-      <div class="sidebar-wrapper">
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
+              <img src="../images/faces/face.jpg" alt="profile"/>
+              <span class="nav-profile-name"><?php echo $names?></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="account.php">
+                <i class="mdi mdi-settings text-primary"></i>
+                Settings
+              </a>
+              <a class="dropdown-item" href="../php-includes/logout.php">
+                <i class="mdi mdi-logout text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="active">
-            <a href="dashboard.php">
-              <i class="nc-icon nc-bank"></i>
-              <p>Dashboard</p>
+          <li class="nav-item">
+            <a class="nav-link" href="orders.php">
+              <i class="mdi mdi-grid-large menu-icon"></i>
+              <span class="menu-title">Orders</span>
             </a>
           </li>
-          <li>
-            <a href="profile.php">
-              <i class="nc-icon nc-single-02"></i>
-              <p>Settings</p>
+          <li class="nav-item">
+            <a class="nav-link" href="managers.php">
+            <i class="mdi mdi-account menu-icon"></i>
+              <span class="menu-title">Managers</span>
             </a>
           </li>
-          <li>
-            <a href="../php-includes/logout.php">
-              <i class="nc-icon nc-button-power"></i>
-              <p>Logout</p>
+          <li class="nav-item">
+            <a class="nav-link" href="account.php">
+              <i class="mdi mdi-settings menu-icon"></i>
+              <span class="menu-title">Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../php-includes/logout.php">
+              <i class="mdi mdi-logout menu-icon"></i>
+              <span class="menu-title">Logout</span>
             </a>
           </li>
         </ul>
-      </div>
-    </div>
-    <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-            <a class="navbar-brand" href="javascript:;">IOT based three phase fail monitoring system login</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link btn-rotate" href="../php-includes/logout.php">
-                <i class="nc-icon nc-button-power"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Logout</span>
-                  </p>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
       </nav>
