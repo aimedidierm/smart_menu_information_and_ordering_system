@@ -87,7 +87,7 @@ if(isset($_POST['save'])){
                         }
                     }
                     if(isset($_POST['delete'])){
-                    $sql ="DELETE FROM chiefs WHERE id = ?";
+                    $sql ="DELETE FROM chief WHERE id = ?";
                     $stm = $db->prepare($sql);
                     if ($stm->execute(array($sid))) {
                         print "<script>alert('Chief deleted');window.location.assign('chiefs.php')</script>";
