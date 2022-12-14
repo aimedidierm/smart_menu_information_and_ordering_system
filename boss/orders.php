@@ -43,13 +43,10 @@ require 'php-includes/check-login.php';
                             #
                           </th>
                           <th>
-                            First name
+                            Table
                           </th>
                           <th>
-                            Progress
-                          </th>
-                          <th>
-                            Amount
+                            Food
                           </th>
                           <th>
                             Deadline
@@ -57,101 +54,35 @@ require 'php-includes/check-login.php';
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                      $sql = "SELECT * FROM orders";
+                      $stmt = $db->prepare($sql);
+                      $stmt->execute();
+                      if ($stmt->rowCount() > 0) {
+                          $count = 1;
+                          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                          ?>
                         <tr>
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            Herman Beck
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            77.99 Rwf
-                          </td>
-                          <td>
-                            May 15, 2022
-                          </td>
+                          <td><?php print $count?></td>
+                          <td><?php print $row['table_name']?></td>
+                          <td><?php print $row['orders']?></td>
+                          <td><form method="post"><button type="submit" class="btn btn-danger" id="<?php echo $row["id"];$sid=$row["id"];?>" name="delete"><span class="glyphicon glyphicon-trash"></span> Delete</button></form></td>
                         </tr>
-                        <tr>
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            245.30 Rwf
-                          </td>
-                          <td>
-                            July 1, 2022
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            John Richards
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            138.00 Rwf
-                          </td>
-                          <td>
-                            Apr 12, 2022
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Peter Meggik
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            77.99 Rwf
-                          </td>
-                          <td>
-                            May 15, 2022
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Edward
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            160.2 Rwf
-                          </td>
-                          <td>
-                            May 03, 2022
-                          </td>
-                        </tr>
+                        <?php
+                        $count++;
+                        }
+                    }
+                    if(isset($_POST['delete'])){
+                    $sql ="DELETE FROM orders WHERE id = ?";
+                    $stm = $db->prepare($sql);
+                    if ($stm->execute(array($sid))) {
+                        print "<script>alert('Order deleted');window.location.assign('orders.php')</script>";
+            
+                    } else {
+                        print "<script>alert('Delete fail');window.location.assign('orders.php')</script>";
+                    }
+                    }
+                    ?>
                       </tbody>
                     </table>
                   </div>
