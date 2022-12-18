@@ -49,6 +49,9 @@ require 'php-includes/check-login.php';
                             Food
                           </th>
                           <th>
+                            Price
+                          </th>
+                          <th>
                             Deadline
                           </th>
                         </tr>
@@ -66,6 +69,7 @@ require 'php-includes/check-login.php';
                           <td><?php print $count?></td>
                           <td><?php print $row['table_name']?></td>
                           <td><?php print $row['orders']?></td>
+                          <td><?php print $row['price']?> Rwf</td>
                           <td><form method="post"><button type="submit" class="btn btn-danger" id="<?php echo $row["id"];$sid=$row["id"];?>" name="delete"><span class="glyphicon glyphicon-trash"></span> Delete</button></form></td>
                         </tr>
                         <?php

@@ -13,15 +13,23 @@ $rows = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($stmt->rowCount()>0) {
     $telephone=$rows['phone'];
 }
-if(isset($_GET['order'])){
+$query = "SELECT * FROM chief limit 1";
+$stmt = $db->prepare($query);
+$stmt->execute();
+$rows = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($stmt->rowCount()>0) {
+    $telephone2=$rows['phone'];
+}
+if(isset($_POST['order'])){
     //order sample codes here
-    $food=$_GET['order'];
-    $sql ="INSERT INTO orders (table_name,orders) VALUES ('Table 1',?)";
+    $food=$_POST['order'];
+    $price=$_POST['price'];
+    $sql ="INSERT INTO orders (table_name,orders,price) VALUES ('Table 1',?,?)";
     $stm = $db->prepare($sql);
-    if ($stm->execute(array($food))) {
-        $messi="Client on Table 1 wants".$food;
+    if ($stm->execute(array($food,$price))) {
+        $messi="Client on Table 1 wants ".$food;
         $sms = new SmsSimple();
-        $sms->recipients([$telephone])
+        $sms->recipients([$telephone,$telephone2])
             ->message($messi)
             ->sender("+250785063201")
             ->username("kwizerafisto")
